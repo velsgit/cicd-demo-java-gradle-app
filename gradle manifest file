@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gradle-project
+  labels:
+    app: gradle-project
+spec:
+  replicas: 3
+  selector:
+   matchLabels:
+     app: gradle
+  template:
+    metadata:
+      labels:
+        app: gradle
+    spec:
+      containers:
+      - name: gradle
+        image: imanghosh/gradle
+        ports:
+        - containerPort: 80
